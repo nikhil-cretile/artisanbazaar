@@ -38,42 +38,42 @@ export const categories: Category[] = [
   {
     id: "cat1",
     name: "Handicrafts",
-    image: "https://images.unsplash.com/photo-1590839335424-353cc9132771?q=80&w=600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1590839335424-353cc9132771?q=80&w=800&auto=format&fit=crop",
     description: "Exquisite handcrafted items made by skilled artisans",
     count: 42
   },
   {
     id: "cat2",
     name: "Textiles",
-    image: "https://images.unsplash.com/photo-1622892735236-a3c8f374cea0?q=80&w=600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1622892735236-a3c8f374cea0?q=80&w=800&auto=format&fit=crop",
     description: "Traditional fabrics, sarees, and garments",
     count: 36
   },
   {
     id: "cat3",
     name: "Pottery",
-    image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?q=80&w=600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?q=80&w=800&auto=format&fit=crop",
     description: "Beautiful clay pottery and ceramics",
     count: 28
   },
   {
     id: "cat4",
     name: "Sweets & Snacks",
-    image: "https://images.unsplash.com/photo-1614948871270-f7b0a0d15581?q=80&w=600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1614948871270-f7b0a0d15581?q=80&w=800&auto=format&fit=crop",
     description: "Authentic Indian sweets, snacks, and delicacies",
     count: 31
   },
   {
     id: "cat5",
     name: "Jewelry",
-    image: "https://images.unsplash.com/photo-1575224300306-1b8da36134ec?q=80&w=600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1575224300306-1b8da36134ec?q=80&w=800&auto=format&fit=crop",
     description: "Traditional and contemporary jewelry pieces",
     count: 35
   },
   {
     id: "cat6",
     name: "Home Decor",
-    image: "https://images.unsplash.com/photo-1608716987742-7a5134d7d7b7?q=80&w=600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1608716987742-7a5134d7d7b7?q=80&w=800&auto=format&fit=crop",
     description: "Decorative items to add cultural flair to your spaces",
     count: 45
   }

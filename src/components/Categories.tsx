@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { categories } from "@/lib/data";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const Categories = () => {
   const [visibleItems, setVisibleItems] = useState<string[]>([]);
@@ -52,11 +53,18 @@ const Categories = () => {
             >
               <Link to={`/category/${category.id}`} className="block group relative">
                 <div className="relative h-60 overflow-hidden">
-                  <img
-                    src={category.image}
-                    alt={category.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  <AspectRatio ratio={16/9} className="bg-muted">
+                    <img
+                      src={category.image}
+                      alt={category.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => {
+                        // Fallback image in case the category image fails to load
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1605101100278-5d1deb2b6498?q=80&w=600&auto=format&fit=crop";
+                        console.log(`Failed to load image for category: ${category.name}`);
+                      }}
+                    />
+                  </AspectRatio>
                   <div className="absolute inset-0 bg-gradient-to-t from-bazaar-darkred/80 via-bazaar-red/30 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="text-xl font-display font-semibold text-white mb-1">
