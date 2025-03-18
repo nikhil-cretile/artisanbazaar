@@ -34,6 +34,9 @@ const Index = () => {
       description: `${product.name} has been added to your cart.`,
       duration: 3000,
     });
+    
+    // Open the cart when an item is added
+    setIsCartOpen(true);
   };
 
   const handleUpdateQuantity = (productId: string, quantity: number) => {
@@ -52,12 +55,15 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar cartItemsCount={totalCartItems} />
+      <Navbar 
+        cartItemsCount={totalCartItems} 
+        onCartClick={() => setIsCartOpen(true)}
+      />
       
       <main className="flex-1">
         <Hero />
         <Categories />
-        <FeaturedProducts />
+        <FeaturedProducts onAddToCart={handleAddToCart} />
         <ArtisanSpotlight />
       </main>
       

@@ -1,9 +1,13 @@
 
 import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
-import { getFeaturedProducts } from '@/lib/data';
+import { getFeaturedProducts, Product } from '@/lib/data';
 
-const FeaturedProducts = () => {
+interface FeaturedProductsProps {
+  onAddToCart?: (product: Product) => void;
+}
+
+const FeaturedProducts = ({ onAddToCart }: FeaturedProductsProps) => {
   const featuredProducts = getFeaturedProducts();
   const [activeTab, setActiveTab] = useState('all');
   const [visibleItems, setVisibleItems] = useState<string[]>([]);
@@ -43,11 +47,11 @@ const FeaturedProducts = () => {
   );
 
   return (
-    <section className="py-20">
+    <section className="py-20 bg-gradient-to-b from-white to-bazaar-cream/50">
       <div className="bazaar-container">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="section-title">Featured Products</h2>
-          <p className="section-subtitle">
+          <p className="section-subtitle mt-8">
             Handpicked treasures crafted by our skilled artisans across India
           </p>
         </div>
@@ -57,7 +61,7 @@ const FeaturedProducts = () => {
           <button 
             className={`px-4 py-2 rounded-full transition-colors duration-300 ${
               activeTab === 'all' 
-                ? 'bg-bazaar-saffron text-white'
+                ? 'bg-bazaar-saffron text-white font-medium'
                 : 'bg-muted hover:bg-muted/80 text-foreground'
             }`}
             onClick={() => setActiveTab('all')}
@@ -70,7 +74,7 @@ const FeaturedProducts = () => {
               key={category}
               className={`px-4 py-2 rounded-full transition-colors duration-300 ${
                 activeTab === category 
-                  ? 'bg-bazaar-saffron text-white'
+                  ? 'bg-bazaar-saffron text-white font-medium'
                   : 'bg-muted hover:bg-muted/80 text-foreground'
               }`}
               onClick={() => setActiveTab(category)}
@@ -90,7 +94,7 @@ const FeaturedProducts = () => {
                 isVisible(product.id) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
             >
-              <ProductCard product={product} />
+              <ProductCard product={product} onAddToCart={onAddToCart} />
             </div>
           ))}
         </div>

@@ -7,14 +7,14 @@ const ArtisanSpotlight = () => {
   const featuredArtisans = getFeaturedArtisans();
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-muted/30 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-white to-bazaar-cream/30 relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-full rangoli-pattern opacity-30 pointer-events-none"></div>
+      <div className="absolute top-0 left-0 w-full h-full artinci-pattern opacity-30 pointer-events-none"></div>
       
       <div className="bazaar-container relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="section-title">Meet Our Artisans</h2>
-          <p className="section-subtitle">
+          <p className="section-subtitle mt-8">
             The skilled creators behind our beautiful handcrafted products
           </p>
         </div>
@@ -22,7 +22,7 @@ const ArtisanSpotlight = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Text Content */}
           <div className="order-2 md:order-1 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            <div className="bg-white/80 backdrop-blur-sm shadow-lg rounded-xl p-8 border border-bazaar-mehendi/20">
+            <div className="bg-white/90 backdrop-blur-sm shadow-lg rounded-xl p-8 border border-bazaar-mehendi/20">
               <div className="inline-block px-4 py-1.5 mb-6 text-sm font-medium bg-bazaar-mehendi/20 text-bazaar-emerald rounded-full">
                 Artisan Spotlight
               </div>
@@ -70,7 +70,7 @@ const ArtisanSpotlight = () => {
               />
               
               {/* Product count badge */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-white rounded-full shadow-lg flex flex-col items-center justify-center p-4 text-center">
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-white rounded-full shadow-lg flex flex-col items-center justify-center p-4 text-center border border-bazaar-sage/20">
                 <span className="text-3xl font-display font-bold text-bazaar-saffron">
                   {featuredArtisans[0].products}+
                 </span>

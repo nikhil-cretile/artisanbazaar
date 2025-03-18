@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -64,14 +63,18 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				bazaar: {
-					saffron: "#FF9933",
-					terracotta: "#CD5C5C",
-					peacock: "#33A5C2",
-					emerald: "#138808",
-					spice: "#D2691E",
-					turmeric: "#E4A010",
-					mehendi: "#94AF9F",
-					marigold: "#FFAA00"
+					saffron: "#E07B3C",
+					terracotta: "#BC5D2E",
+					peacock: "#1A7A8E",
+					emerald: "#0F6D3D",
+					spice: "#9E4C2E",
+					turmeric: "#DA8A26",
+					mehendi: "#768D7D",
+					marigold: "#E7A83E",
+					cream: "#F7F3E9",
+					clay: "#C67D5A",
+					rust: "#A54E35",
+					sage: "#AFBDB1"
 				}
 			},
 			borderRadius: {
