@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 import { Menu, X, ShoppingBag, Search, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const Navbar = ({ cartItemsCount = 0 }: { cartItemsCount?: number }) => {
+interface NavbarProps {
+  cartItemsCount?: number;
+  onCartClick?: () => void;
+}
+
+const Navbar = ({ cartItemsCount = 0, onCartClick }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -35,14 +40,17 @@ const Navbar = ({ cartItemsCount = 0 }: { cartItemsCount?: number }) => {
             <button className="p-2 text-foreground hover:text-bazaar-saffron transition-colors">
               <User size={20} />
             </button>
-            <Link to="/cart" className="p-2 text-foreground hover:text-bazaar-saffron transition-colors relative">
+            <button 
+              onClick={onCartClick}
+              className="p-2 text-foreground hover:text-bazaar-saffron transition-colors relative"
+            >
               <ShoppingBag size={20} />
               {cartItemsCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-bazaar-saffron text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-semibold">
                   {cartItemsCount}
                 </span>
               )}
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -99,9 +107,9 @@ const Navbar = ({ cartItemsCount = 0 }: { cartItemsCount?: number }) => {
               <button className="p-2 text-foreground hover:text-bazaar-saffron transition-colors">
                 <User size={20} />
               </button>
-              <Link to="/cart" 
+              <button 
+                onClick={onCartClick}
                 className="p-2 text-foreground hover:text-bazaar-saffron transition-colors relative"
-                onClick={() => setIsMenuOpen(false)}
               >
                 <ShoppingBag size={20} />
                 {cartItemsCount > 0 && (
@@ -109,7 +117,7 @@ const Navbar = ({ cartItemsCount = 0 }: { cartItemsCount?: number }) => {
                     {cartItemsCount}
                   </span>
                 )}
-              </Link>
+              </button>
             </div>
           </div>
         </div>

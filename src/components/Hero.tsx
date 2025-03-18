@@ -41,8 +41,8 @@ const Hero = () => {
               {/* Main image - Indian Handicrafts */}
               <div className="absolute top-0 left-0 w-3/4 h-3/4 z-10 animate-fade-in" style={{ animationDelay: '0.3s' }}>
                 <img 
-                  src="https://images.unsplash.com/photo-1625795214995-6e9626d78f51?q=80&w=800&auto=format&fit=crop"
-                  alt="Indian Handicrafts" 
+                  src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop"
+                  alt="Traditional Indian Handicrafts" 
                   className="w-full h-full object-cover rounded-lg shadow-xl"
                 />
                 <div className="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/70 to-transparent rounded-b-lg">
@@ -53,8 +53,8 @@ const Hero = () => {
               {/* Secondary image - Traditional Sweets */}
               <div className="absolute bottom-0 right-0 w-2/3 h-2/3 z-20 animate-fade-in" style={{ animationDelay: '0.6s' }}>
                 <img 
-                  src="https://images.unsplash.com/photo-1617541391432-bd530bd8bf67?q=80&w=800&auto=format&fit=crop"
-                  alt="Traditional Sweets" 
+                  src="https://images.unsplash.com/photo-1620843437920-ead942b3abd3?q=80&w=800&auto=format&fit=crop"
+                  alt="Traditional Indian Sweets" 
                   className="w-full h-full object-cover rounded-lg shadow-xl"
                 />
                 <div className="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/70 to-transparent rounded-b-lg">
