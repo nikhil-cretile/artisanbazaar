@@ -63,18 +63,18 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				bazaar: {
-					saffron: "#E07B3C",
-					terracotta: "#BC5D2E",
-					peacock: "#1A7A8E",
-					emerald: "#0F6D3D",
-					spice: "#9E4C2E",
-					turmeric: "#DA8A26",
-					mehendi: "#768D7D",
-					marigold: "#E7A83E",
+					red: "#D01C1F",
+					darkred: "#B01517",
+					crimson: "#CF1919",
+					maroon: "#800000",
+					coral: "#FF6F61",
 					cream: "#F7F3E9",
-					clay: "#C67D5A",
-					rust: "#A54E35",
-					sage: "#AFBDB1"
+					gold: "#FFD700",
+					bronze: "#CD7F32",
+					spice: "#9E4C2E",
+					mehendi: "#768D7D",
+					terracotta: "#BC5D2E",
+					clay: "#C67D5A"
 				}
 			},
 			borderRadius: {

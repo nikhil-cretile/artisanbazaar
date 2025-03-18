@@ -46,7 +46,7 @@ const Categories = () => {
             <div
               key={category.id}
               id={category.id}
-              className={`category-card rounded-xl overflow-hidden shadow-md border border-bazaar-sage/20 transition-all duration-500 ${
+              className={`category-card rounded-xl overflow-hidden shadow-md border border-bazaar-red/10 transition-all duration-500 ${
                 isVisible(category.id) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
             >
@@ -57,7 +57,7 @@ const Categories = () => {
                     alt={category.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-bazaar-darkred/80 via-bazaar-red/30 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="text-xl font-display font-semibold text-white mb-1">
                       {category.name}
@@ -71,7 +71,7 @@ const Categories = () => {
                   </div>
                 </div>
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-bazaar-saffron/0 group-hover:bg-bazaar-saffron/10 transition-colors duration-300"></div>
+                <div className="absolute inset-0 bg-bazaar-red/0 group-hover:bg-bazaar-red/10 transition-colors duration-300"></div>
               </Link>
             </div>
           ))}

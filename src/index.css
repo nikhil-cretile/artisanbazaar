@@ -7,23 +7,23 @@
 
 @layer base {
   :root {
-    --background: 40 38% 97%;
-    --foreground: 22 30% 15%;
+    --background: 0 38% 97%;
+    --foreground: 0 30% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 22 30% 15%;
+    --card-foreground: 0 30% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 22 30% 15%;
+    --popover-foreground: 0 30% 15%;
 
-    --primary: 27 66% 56%;
+    --primary: 0 80% 46%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 192 68% 33%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 30 15% 92%;
-    --muted-foreground: 20 15% 40%;
+    --muted: 0 15% 92%;
+    --muted-foreground: 0 15% 40%;
 
     --accent: 152 75% 24%;
     --accent-foreground: 0 0% 98%;
@@ -31,31 +31,31 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 15% 85%;
-    --input: 30 15% 85%;
-    --ring: 27 66% 56%;
+    --border: 0 15% 85%;
+    --input: 0 15% 85%;
+    --ring: 0 80% 46%;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 22 30% 10%;
-    --foreground: 30 15% 92%;
+    --background: 0 30% 10%;
+    --foreground: 0 15% 92%;
 
-    --card: 22 30% 12%;
-    --card-foreground: 30 15% 92%;
+    --card: 0 30% 12%;
+    --card-foreground: 0 15% 92%;
 
-    --popover: 22 30% 12%;
-    --popover-foreground: 30 15% 92%;
+    --popover: 0 30% 12%;
+    --popover-foreground: 0 15% 92%;
 
-    --primary: 27 66% 56%;
+    --primary: 0 80% 46%;
     --primary-foreground: 0 0% 8%;
 
     --secondary: 192 68% 33%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 22 30% 20%;
-    --muted-foreground: 30 15% 70%;
+    --muted: 0 30% 20%;
+    --muted-foreground: 0 15% 70%;
 
     --accent: 152 75% 24%;
     --accent-foreground: 0 0% 98%;
@@ -63,13 +63,13 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 22 30% 25%;
-    --input: 22 30% 25%;
-    --ring: 27 66% 56%;
+    --border: 0 30% 25%;
+    --input: 0 30% 25%;
+    --ring: 0 80% 46%;
   }
 }
 
-/* ... keep existing code (body styles, font styles, component classes) */
+/* ... keep existing code (body styles, font styles) */
 
 @layer components {
   .bazaar-container {
@@ -77,30 +77,30 @@
   }
   
   .nav-link {
-    @apply relative px-3 py-2 font-medium text-foreground hover:text-bazaar-saffron transition-colors duration-200 
-           after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-bazaar-saffron after:left-0 after:-bottom-0.5 
+    @apply relative px-3 py-2 font-medium text-foreground hover:text-bazaar-red transition-colors duration-200 
+           after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-bazaar-red after:left-0 after:-bottom-0.5 
            after:transition-all after:duration-300 hover:after:w-full;
   }
   
   .nav-link.active {
-    @apply text-bazaar-saffron after:w-full;
+    @apply text-bazaar-red after:w-full;
   }
   
   .product-card {
     @apply relative bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 
-           hover:shadow-lg hover:-translate-y-1 border border-transparent hover:border-bazaar-sage/30;
+           hover:shadow-lg hover:-translate-y-1 border border-transparent hover:border-bazaar-clay/30;
   }
   
   .btn-primary {
-    @apply px-6 py-2.5 bg-bazaar-saffron text-white rounded-md shadow-sm hover:bg-bazaar-saffron/90 
+    @apply px-6 py-2.5 bg-bazaar-red text-white rounded-md shadow-sm hover:bg-bazaar-darkred 
            transition-all duration-200 font-medium focus:outline-none focus:ring-2 
-           focus:ring-bazaar-saffron/50 focus:ring-offset-2;
+           focus:ring-bazaar-red/50 focus:ring-offset-2;
   }
   
   .btn-secondary {
-    @apply px-6 py-2.5 bg-bazaar-peacock text-white rounded-md shadow-sm hover:bg-bazaar-peacock/90 
+    @apply px-6 py-2.5 bg-bazaar-maroon text-white rounded-md shadow-sm hover:bg-bazaar-maroon/90 
            transition-all duration-200 font-medium focus:outline-none focus:ring-2 
-           focus:ring-bazaar-peacock/50 focus:ring-offset-2;
+           focus:ring-bazaar-maroon/50 focus:ring-offset-2;
   }
   
   .glass-card {
@@ -112,7 +112,7 @@
   }
   
   .section-title:after {
-    @apply content-[''] absolute -bottom-2 left-1/2 -translate-x-1/2 w-16 h-1 bg-bazaar-saffron rounded-full;
+    @apply content-[''] absolute -bottom-2 left-1/2 -translate-x-1/2 w-16 h-1 bg-bazaar-red rounded-full;
   }
   
   .section-subtitle {
@@ -120,13 +120,13 @@
   }
   
   .artisan-card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden border border-bazaar-sage/20 transition-all hover:shadow-lg;
+    @apply bg-white rounded-lg shadow-md overflow-hidden border border-bazaar-clay/20 transition-all hover:shadow-lg;
   }
 }
 
-/* ... keep existing code (scrollbar, animations, decorative elements) */
+/* ... keep existing code (scrollbar, animations) */
 
 /* Artinci-inspired pattern background */
 .artinci-pattern {
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm0 30c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm-20-15c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm40 0c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10z' fill='%23E07B3C' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm0 30c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm-20-15c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm40 0c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10z' fill='%23D01C1F' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
 }

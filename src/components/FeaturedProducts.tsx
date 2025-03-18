@@ -61,7 +61,7 @@ const FeaturedProducts = ({ onAddToCart }: FeaturedProductsProps) => {
           <button 
             className={`px-4 py-2 rounded-full transition-colors duration-300 ${
               activeTab === 'all' 
-                ? 'bg-bazaar-saffron text-white font-medium'
+                ? 'bg-bazaar-red text-white font-medium'
                 : 'bg-muted hover:bg-muted/80 text-foreground'
             }`}
             onClick={() => setActiveTab('all')}
@@ -74,7 +74,7 @@ const FeaturedProducts = ({ onAddToCart }: FeaturedProductsProps) => {
               key={category}
               className={`px-4 py-2 rounded-full transition-colors duration-300 ${
                 activeTab === category 
-                  ? 'bg-bazaar-saffron text-white font-medium'
+                  ? 'bg-bazaar-red text-white font-medium'
                   : 'bg-muted hover:bg-muted/80 text-foreground'
               }`}
               onClick={() => setActiveTab(category)}
