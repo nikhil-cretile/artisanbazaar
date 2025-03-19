@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { products, artisans, Product, CartItem } from '@/lib/data';
+import { products, artisans, categories, Product, CartItem } from '@/lib/data';
 import { Star, Minus, Plus, Heart, ShoppingBag } from 'lucide-react';
 import { formatPrice } from '@/lib/data';
 import { toast } from '@/components/ui/use-toast';

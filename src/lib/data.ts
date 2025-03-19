@@ -111,6 +111,27 @@ export const artisans: Artisan[] = [
     image: "https://images.unsplash.com/photo-1542367787-4861f0e38d3d?q=80&w=600&auto=format&fit=crop",
     rating: 4.9,
     products: 18
+  },
+  {
+    id: "art4",
+    name: "Sharma Rao",
+    location: "Jaipur, Rajasthan",
+    specialty: "Meenakari Jewelry",
+    bio: "With over 25 years of experience, Sharma Rao is a master craftsman specializing in the ancient art of Meenakari, creating stunning jewelry with intricate enamel work.",
+    image: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=600&auto=format&fit=crop",
+    featured: true,
+    rating: 4.7,
+    products: 22
+  },
+  {
+    id: "art5",
+    name: "Neela Gupta",
+    location: "Agra, Uttar Pradesh",
+    specialty: "Marble Inlay Work",
+    bio: "Neela Gupta learned the art of marble inlay from her father, who worked on the restoration of the Taj Mahal. Her intricate designs honor this centuries-old tradition.",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop",
+    rating: 4.8,
+    products: 15
   }
 ];
 
@@ -210,6 +231,102 @@ export const products: Product[] = [
     rating: 4.9,
     reviews: 173,
     featured: true
+  },
+  {
+    id: "prod9",
+    name: "Meenakari Pendant Necklace",
+    description: "Stunning gold-plated pendant with traditional Meenakari enamel work, handcrafted by skilled artisans",
+    price: 3650,
+    image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?q=80&w=600&auto=format&fit=crop",
+    category: "Jewelry",
+    artisanId: "art4",
+    rating: 4.8,
+    reviews: 58,
+    new: true,
+    featured: true
+  },
+  {
+    id: "prod10",
+    name: "Marble Elephant Figurine",
+    description: "Elegant marble elephant with intricate inlay work using semi-precious stones, a perfect home accent",
+    price: 4200,
+    image: "https://images.unsplash.com/photo-1599619585752-c3edb42a414c?q=80&w=600&auto=format&fit=crop",
+    category: "Home Decor",
+    artisanId: "art5",
+    rating: 4.7,
+    reviews: 42,
+    new: true
+  },
+  {
+    id: "prod11",
+    name: "Pashmina Wool Shawl",
+    description: "Luxuriously soft Pashmina wool shawl with traditional embroidery, perfect for special occasions",
+    price: 5800,
+    image: "https://images.unsplash.com/photo-1594761051656-153faa48d523?q=80&w=600&auto=format&fit=crop",
+    category: "Textiles",
+    artisanId: "art2",
+    rating: 4.9,
+    reviews: 87,
+    bestseller: true
+  },
+  {
+    id: "prod12",
+    name: "Handcrafted Wooden Chess Set",
+    description: "Beautifully carved wooden chess set with intricate detailing, made from sustainable Indian rosewood",
+    price: 3850,
+    image: "https://images.unsplash.com/photo-1586165368502-1bad197a6461?q=80&w=600&auto=format&fit=crop",
+    category: "Handicrafts",
+    artisanId: "art1",
+    rating: 4.8,
+    reviews: 64,
+    featured: true
+  },
+  {
+    id: "prod13",
+    name: "Clay Water Pot with Stand",
+    description: "Traditional clay water pot that naturally cools water, complete with a decorative wooden stand",
+    price: 1250,
+    image: "https://images.unsplash.com/photo-1576004661646-61d7cbc4ddfc?q=80&w=600&auto=format&fit=crop",
+    category: "Pottery",
+    artisanId: "art5",
+    rating: 4.6,
+    reviews: 53,
+    new: true
+  },
+  {
+    id: "prod14",
+    name: "Handmade Jaggery Candy (300g)",
+    description: "Natural candy made from organic jaggery and select spices, a healthy alternative to refined sugar sweets",
+    price: 320,
+    image: "https://images.unsplash.com/photo-1597655601041-7c65d84ab8a9?q=80&w=600&auto=format&fit=crop",
+    category: "Sweets & Snacks",
+    artisanId: "art3",
+    rating: 4.7,
+    reviews: 95
+  },
+  {
+    id: "prod15",
+    name: "Silver Filigree Earrings",
+    description: "Delicate silver filigree earrings showcasing the ancient art of intricate metalwork, lightweight and elegant",
+    price: 1850,
+    image: "https://images.unsplash.com/photo-1631965004544-1762fc696476?q=80&w=600&auto=format&fit=crop",
+    category: "Jewelry",
+    artisanId: "art4",
+    rating: 4.9,
+    reviews: 47,
+    bestseller: true
+  },
+  {
+    id: "prod16",
+    name: "Hand-Embroidered Cushion Covers (Set of 2)",
+    description: "Vibrant cushion covers featuring traditional hand embroidery with mirror work, adds a pop of color to any space",
+    price: 1450,
+    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=600&auto=format&fit=crop",
+    category: "Home Decor",
+    artisanId: "art1",
+    rating: 4.8,
+    reviews: 76,
+    new: true
   }
 ];
 

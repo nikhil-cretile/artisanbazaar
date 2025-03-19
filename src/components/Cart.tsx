@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X, ShoppingBag, Plus, Minus } from 'lucide-react';
 import { CartItem, formatPrice } from '@/lib/data';
 import { Link } from 'react-router-dom';
@@ -14,6 +14,11 @@ interface CartProps {
 
 const Cart = ({ isOpen, onClose, items, onUpdateQuantity, onRemoveItem }: CartProps) => {
   const totalAmount = items.reduce((total, item) => total + (item.product.price * item.quantity), 0);
+  
+  // Persist cart items in localStorage when they change
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(items));
+  }, [items]);
   
   return (
     <div className={`fixed inset-0 z-50 ${isOpen ? 'visible' : 'invisible'}`}>
@@ -55,7 +60,7 @@ const Cart = ({ isOpen, onClose, items, onUpdateQuantity, onRemoveItem }: CartPr
             </p>
             <button 
               onClick={onClose}
-              className="btn-primary"
+              className="bg-bazaar-red hover:bg-bazaar-red/90 text-white font-medium py-2 px-6 rounded-md transition-colors"
             >
               Continue Shopping
             </button>
@@ -71,14 +76,19 @@ const Cart = ({ isOpen, onClose, items, onUpdateQuantity, onRemoveItem }: CartPr
                       src={item.product.image} 
                       alt={item.product.name} 
                       className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1605101100278-5d1deb2b6498?q=80&w=150&auto=format&fit=crop";
+                      }}
                     />
                   </div>
                   
                   {/* Product Info */}
                   <div className="flex-1">
-                    <h3 className="font-medium text-foreground mb-1 leading-snug">
-                      {item.product.name}
-                    </h3>
+                    <Link to={`/product/${item.product.id}`} className="group" onClick={onClose}>
+                      <h3 className="font-medium text-foreground mb-1 leading-snug group-hover:text-bazaar-red transition-colors">
+                        {item.product.name}
+                      </h3>
+                    </Link>
                     <p className="text-xs text-muted-foreground mb-2">
                       {item.product.category}
                     </p>
@@ -139,7 +149,7 @@ const Cart = ({ isOpen, onClose, items, onUpdateQuantity, onRemoveItem }: CartPr
             </div>
             <Link 
               to="/checkout"
-              className="w-full btn-primary block text-center"
+              className="w-full bg-bazaar-red hover:bg-bazaar-red/90 text-white font-medium py-3 px-6 rounded-md transition-colors block text-center"
               onClick={onClose}
             >
               Proceed to Checkout
