@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { products } from '@/lib/data';
+import { products, loadCartFromLocalStorage, saveCartToLocalStorage } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink } from '@/components/ui/pagination';
 import Cart from '@/components/Cart';
@@ -15,11 +15,14 @@ const Products = () => {
   
   // Load cart items from localStorage on initial render
   useEffect(() => {
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-      setCartItems(JSON.parse(savedCart));
-    }
+    const savedCart = loadCartFromLocalStorage();
+    setCartItems(savedCart);
   }, []);
+  
+  // Save cart items to localStorage whenever they change
+  useEffect(() => {
+    saveCartToLocalStorage(cartItems);
+  }, [cartItems]);
   
   const handleAddToCart = (product: Product) => {
     const existingItem = cartItems.find(item => item.product.id === product.id);
@@ -67,7 +70,7 @@ const Products = () => {
         onCartClick={() => setIsCartOpen(true)}
       />
       
-      <main className="flex-1 pt-24">
+      <main className="flex-1 pt-16">
         <div className="bazaar-container py-12">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">All Products</h1>
@@ -90,6 +93,12 @@ const Products = () => {
             <PaginationContent>
               <PaginationItem>
                 <PaginationLink href="#" isActive>1</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#">2</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#">3</PaginationLink>
               </PaginationItem>
             </PaginationContent>
           </Pagination>

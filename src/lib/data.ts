@@ -1,4 +1,3 @@
-
 export type Product = {
   id: string;
   name: string;
@@ -77,6 +76,20 @@ export const categories: Category[] = [
     image: "https://images.unsplash.com/photo-1608716987742-7a5134d7d7b7?q=80&w=800&auto=format&fit=crop",
     description: "Decorative items to add cultural flair to your spaces",
     count: 45
+  },
+  {
+    id: "cat7",
+    name: "Clothing",
+    image: "https://images.unsplash.com/photo-1592301933927-35b597393c0a?q=80&w=800&auto=format&fit=crop",
+    description: "Traditional and fusion clothing for all occasions",
+    count: 38
+  },
+  {
+    id: "cat8",
+    name: "Spices & Condiments",
+    image: "https://images.unsplash.com/photo-1532336414038-cf19250c5757?q=80&w=800&auto=format&fit=crop",
+    description: "Authentic Indian spices and condiments",
+    count: 25
   }
 ];
 
@@ -328,6 +341,155 @@ export const products: Product[] = [
     rating: 4.8,
     reviews: 76,
     new: true
+  },
+  {
+    id: "prod17",
+    name: "Handwoven Cotton Kurta",
+    description: "Comfortable handwoven cotton kurta with traditional block prints, perfect for casual wear",
+    price: 1450,
+    originalPrice: 1800,
+    image: "https://images.unsplash.com/photo-1620381537132-31dd3101ac68?q=80&w=600&auto=format&fit=crop",
+    category: "Clothing",
+    artisanId: "art1",
+    rating: 4.7,
+    reviews: 68,
+    new: true
+  },
+  {
+    id: "prod18",
+    name: "Embroidered Silk Shawl",
+    description: "Luxurious silk shawl with intricate hand embroidery, adds elegance to any outfit",
+    price: 3950,
+    originalPrice: 4500,
+    image: "https://images.unsplash.com/photo-1597983073453-ef06cfc2240e?q=80&w=600&auto=format&fit=crop",
+    category: "Clothing",
+    artisanId: "art2",
+    rating: 4.9,
+    reviews: 42,
+    bestseller: true
+  },
+  {
+    id: "prod19",
+    name: "Men's Handloom Cotton Shirt",
+    description: "Classic handloom cotton shirt with subtle texture, comfortable for everyday wear",
+    price: 1850,
+    image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=600&auto=format&fit=crop",
+    category: "Clothing",
+    artisanId: "art2",
+    rating: 4.6,
+    reviews: 53
+  },
+  {
+    id: "prod20",
+    name: "Traditional Bandhani Dupatta",
+    description: "Vibrant bandhani dupatta in pure cotton, featuring traditional tie-dye patterns",
+    price: 1250,
+    originalPrice: 1500,
+    image: "https://images.unsplash.com/photo-1628944682084-831f35256238?q=80&w=600&auto=format&fit=crop",
+    category: "Clothing",
+    artisanId: "art1",
+    rating: 4.8,
+    reviews: 37,
+    new: true
+  },
+  {
+    id: "prod21",
+    name: "Premium Garam Masala (100g)",
+    description: "Aromatic blend of traditional spices, hand-ground and roasted to perfection",
+    price: 350,
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=600&auto=format&fit=crop",
+    category: "Spices & Condiments",
+    artisanId: "art3",
+    rating: 4.9,
+    reviews: 86,
+    bestseller: true
+  },
+  {
+    id: "prod22",
+    name: "Organic Turmeric Powder (250g)",
+    description: "Pure organic turmeric powder, grown without pesticides and hand-harvested",
+    price: 280,
+    originalPrice: 320,
+    image: "https://images.unsplash.com/photo-1615485500704-8e990f9027c4?q=80&w=600&auto=format&fit=crop",
+    category: "Spices & Condiments",
+    artisanId: "art3",
+    rating: 4.8,
+    reviews: 65
+  },
+  {
+    id: "prod23",
+    name: "Handcrafted Pickle Trio Set",
+    description: "Set of three traditional pickles - mango, lemon, and mixed vegetable, made with authentic recipes",
+    price: 850,
+    image: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?q=80&w=600&auto=format&fit=crop",
+    category: "Spices & Condiments",
+    artisanId: "art3",
+    rating: 4.7,
+    reviews: 42,
+    new: true
+  },
+  {
+    id: "prod24",
+    name: "Temple Design Gold Plated Necklace",
+    description: "Intricately designed temple jewelry inspired necklace, gold-plated with antique finish",
+    price: 4250,
+    originalPrice: 4800,
+    image: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=600&auto=format&fit=crop",
+    category: "Jewelry",
+    artisanId: "art4",
+    rating: 4.8,
+    reviews: 39,
+    featured: true
+  },
+  {
+    id: "prod25",
+    name: "Tribal Silver Cuff Bracelet",
+    description: "Bold tribal design silver cuff bracelet, handcrafted by skilled silversmiths",
+    price: 1950,
+    image: "https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?q=80&w=600&auto=format&fit=crop",
+    category: "Jewelry",
+    artisanId: "art4",
+    rating: 4.7,
+    reviews: 28,
+    new: true
+  },
+  {
+    id: "prod26",
+    name: "Kundan Pearl Drop Earrings",
+    description: "Elegant kundan earrings with pearl drops, perfect for traditional occasions",
+    price: 2850,
+    originalPrice: 3200,
+    image: "https://images.unsplash.com/photo-1672246243648-23afd9995a04?q=80&w=600&auto=format&fit=crop",
+    category: "Jewelry",
+    artisanId: "art4",
+    rating: 4.9,
+    reviews: 53,
+    bestseller: true
+  },
+  {
+    id: "prod27",
+    name: "Terracotta Wall Hanging Set",
+    description: "Set of 3 decorative terracotta wall hangings with traditional motifs, handpainted",
+    price: 1850,
+    image: "https://images.unsplash.com/photo-1604409853888-950253930deb?q=80&w=600&auto=format&fit=crop",
+    category: "Pottery",
+    artisanId: "art5",
+    rating: 4.6,
+    reviews: 34,
+    new: true
+  },
+  {
+    id: "prod28",
+    name: "Black Pottery Coffee Mug Set",
+    description: "Set of 4 elegantly designed black pottery coffee mugs, microwave and dishwasher safe",
+    price: 1450,
+    originalPrice: 1800,
+    image: "https://images.unsplash.com/photo-1530010645967-39de4cd1d6a8?q=80&w=600&auto=format&fit=crop",
+    category: "Pottery",
+    artisanId: "art5",
+    rating: 4.8,
+    reviews: 47,
+    bestseller: true
   }
 ];
 
@@ -336,7 +498,6 @@ export type CartItem = {
   quantity: number;
 };
 
-// Helper functions
 export const getProductsByCategory = (categoryId: string): Product[] => {
   return products.filter(product => product.category === categories.find(c => c.id === categoryId)?.name);
 };
@@ -363,4 +524,69 @@ export const getFeaturedArtisans = (): Artisan[] => {
 
 export const formatPrice = (price: number): string => {
   return `₹${price.toLocaleString('en-IN')}`;
+};
+
+export const saveCartToLocalStorage = (cartItems: CartItem[]): void => {
+  localStorage.setItem('cart', JSON.stringify(cartItems));
+};
+
+export const loadCartFromLocalStorage = (): CartItem[] => {
+  const savedCart = localStorage.getItem('cart');
+  return savedCart ? JSON.parse(savedCart) : [];
+};
+
+export const saveWishlistToLocalStorage = (products: Product[]): void => {
+  localStorage.setItem('wishlist', JSON.stringify(products));
+};
+
+export const loadWishlistFromLocalStorage = (): Product[] => {
+  const savedWishlist = localStorage.getItem('wishlist');
+  return savedWishlist ? JSON.parse(savedWishlist) : [];
+};
+
+export type FilterOptions = {
+  minPrice?: number;
+  maxPrice?: number;
+  categories?: string[];
+  rating?: number;
+  sortBy?: 'price-low-high' | 'price-high-low' | 'rating' | 'newest';
+};
+
+export const filterProducts = (allProducts: Product[], options: FilterOptions): Product[] => {
+  return allProducts.filter(product => {
+    if (options.minPrice !== undefined && product.price < options.minPrice) return false;
+    if (options.maxPrice !== undefined && product.price > options.maxPrice) return false;
+    
+    if (options.categories && options.categories.length > 0 && !options.categories.includes(product.category)) return false;
+    
+    if (options.rating !== undefined && product.rating < options.rating) return false;
+    
+    return true;
+  }).sort((a, b) => {
+    if (!options.sortBy) return 0;
+    
+    switch (options.sortBy) {
+      case 'price-low-high':
+        return a.price - b.price;
+      case 'price-high-low':
+        return b.price - a.price;
+      case 'rating':
+        return b.rating - a.rating;
+      case 'newest':
+        return a.new ? -1 : b.new ? 1 : 0;
+      default:
+        return 0;
+    }
+  });
+};
+
+export const calculateDiscount = (originalPrice: number, currentPrice: number): number => {
+  return Math.round(((originalPrice - currentPrice) / originalPrice) * 100);
+};
+
+export const getRelatedProducts = (product: Product, count: number = 4): Product[] => {
+  return products
+    .filter(p => p.category === product.category && p.id !== product.id)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, count);
 };

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { categories, getProductsByCategory, Product, CartItem } from '@/lib/data';
+import { categories, getProductsByCategory, Product, CartItem, loadCartFromLocalStorage, saveCartToLocalStorage } from '@/lib/data';
 import ProductCard from '@/components/ProductCard';
 import { toast } from '@/components/ui/use-toast';
 import Cart from '@/components/Cart';
@@ -25,7 +25,16 @@ const CategoryDetail = () => {
         setProducts(categoryProducts);
       }
     }
+    
+    // Load cart from localStorage
+    const savedCart = loadCartFromLocalStorage();
+    setCartItems(savedCart);
   }, [id]);
+  
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    saveCartToLocalStorage(cartItems);
+  }, [cartItems]);
   
   const handleAddToCart = (product: Product) => {
     const existingItem = cartItems.find(item => item.product.id === product.id);
@@ -73,7 +82,7 @@ const CategoryDetail = () => {
           cartItemsCount={totalCartItems}
           onCartClick={() => setIsCartOpen(true)}
         />
-        <main className="flex-1 pt-24">
+        <main className="flex-1 pt-16">
           <div className="bazaar-container py-12 text-center">
             <h1 className="text-3xl font-display font-bold mb-4">Category Not Found</h1>
             <p className="mb-8">The category you're looking for doesn't exist.</p>
@@ -94,7 +103,7 @@ const CategoryDetail = () => {
         onCartClick={() => setIsCartOpen(true)}
       />
       
-      <main className="flex-1 pt-24">
+      <main className="flex-1 pt-16">
         <div className="relative h-64 md:h-80 overflow-hidden">
           <img
             src={category.image}

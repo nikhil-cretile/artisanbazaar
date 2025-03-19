@@ -3,19 +3,22 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { products, artisans, categories, Product, CartItem } from '@/lib/data';
+import { products, artisans, categories, Product, CartItem, loadCartFromLocalStorage, saveCartToLocalStorage, getRelatedProducts } from '@/lib/data';
 import { Star, Minus, Plus, Heart, ShoppingBag } from 'lucide-react';
-import { formatPrice } from '@/lib/data';
+import { formatPrice, calculateDiscount } from '@/lib/data';
 import { toast } from '@/components/ui/use-toast';
 import Cart from '@/components/Cart';
+import ProductCard from '@/components/ProductCard';
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | undefined>(products.find(p => p.id === id));
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const [quantity, setQuantity] = useState(1);
   const [artisan, setArtisan] = useState(artisans.find(a => product && a.id === product.artisanId));
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isInWishlist, setIsInWishlist] = useState(false);
   
   useEffect(() => {
     if (id) {
@@ -25,9 +28,28 @@ const ProductDetail = () => {
       if (productData) {
         const artisanData = artisans.find(a => a.id === productData.artisanId);
         setArtisan(artisanData);
+        
+        // Get related products
+        setRelatedProducts(getRelatedProducts(productData));
       }
     }
+    
+    // Load cart from localStorage
+    const savedCart = loadCartFromLocalStorage();
+    setCartItems(savedCart);
+    
+    // Check if product is in wishlist
+    const savedWishlist = localStorage.getItem('wishlist');
+    if (savedWishlist && id) {
+      const wishlist = JSON.parse(savedWishlist);
+      setIsInWishlist(wishlist.some((item: Product) => item.id === id));
+    }
   }, [id]);
+  
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    saveCartToLocalStorage(cartItems);
+  }, [cartItems]);
   
   const handleAddToCart = () => {
     if (!product) return;
@@ -56,6 +78,31 @@ const ProductDetail = () => {
     setIsCartOpen(true);
   };
   
+  const handleAddRelatedToCart = (product: Product) => {
+    const existingItem = cartItems.find(item => item.product.id === product.id);
+    
+    if (existingItem) {
+      // Update quantity if item already exists
+      setCartItems(cartItems.map(item => 
+        item.product.id === product.id 
+          ? { ...item, quantity: item.quantity + 1 } 
+          : item
+      ));
+    } else {
+      // Add new item to cart
+      setCartItems([...cartItems, { product, quantity: 1 }]);
+    }
+    
+    toast({
+      title: "Added to cart",
+      description: `${product.name} has been added to your cart.`,
+      duration: 3000,
+    });
+    
+    // Open the cart when an item is added
+    setIsCartOpen(true);
+  };
+  
   const handleQuantityChange = (value: number) => {
     setQuantity(Math.max(1, value));
   };
@@ -71,6 +118,35 @@ const ProductDetail = () => {
   const handleRemoveItem = (productId: string) => {
     setCartItems(cartItems.filter(item => item.product.id !== productId));
   };
+  
+  const handleToggleWishlist = () => {
+    if (!product) return;
+    
+    const savedWishlist = localStorage.getItem('wishlist');
+    const wishlist = savedWishlist ? JSON.parse(savedWishlist) : [];
+    
+    if (isInWishlist) {
+      // Remove from wishlist
+      const updatedWishlist = wishlist.filter((item: Product) => item.id !== product.id);
+      localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+      setIsInWishlist(false);
+      toast({
+        title: "Removed from wishlist",
+        description: `${product.name} has been removed from your wishlist.`,
+        duration: 3000,
+      });
+    } else {
+      // Add to wishlist
+      const updatedWishlist = [...wishlist, product];
+      localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+      setIsInWishlist(true);
+      toast({
+        title: "Added to wishlist",
+        description: `${product.name} has been added to your wishlist.`,
+        duration: 3000,
+      });
+    }
+  };
 
   const totalCartItems = cartItems.reduce((total, item) => total + item.quantity, 0);
   
@@ -81,7 +157,7 @@ const ProductDetail = () => {
           cartItemsCount={totalCartItems}
           onCartClick={() => setIsCartOpen(true)}
         />
-        <main className="flex-1 pt-24">
+        <main className="flex-1 pt-16">
           <div className="bazaar-container py-12 text-center">
             <h1 className="text-3xl font-display font-bold mb-4">Product Not Found</h1>
             <p className="mb-8">The product you're looking for doesn't exist or has been removed.</p>
@@ -102,7 +178,7 @@ const ProductDetail = () => {
         onCartClick={() => setIsCartOpen(true)}
       />
       
-      <main className="flex-1 pt-24">
+      <main className="flex-1 pt-16">
         <div className="bazaar-container py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Product Image */}
@@ -140,6 +216,11 @@ const ProductDetail = () => {
                       New
                     </span>
                   )}
+                  {product.originalPrice && (
+                    <span className="px-2 py-1 bg-red-500 text-white text-xs font-semibold rounded">
+                      {calculateDiscount(product.originalPrice, product.price)}% Off
+                    </span>
+                  )}
                 </div>
                 
                 <div className="flex items-center gap-2 mb-6">
@@ -159,7 +240,19 @@ const ProductDetail = () => {
                   <span className="text-sm text-muted-foreground">({product.reviews} reviews)</span>
                 </div>
                 
-                <div className="text-2xl font-semibold mb-6">{formatPrice(product.price)}</div>
+                <div className="text-2xl font-semibold mb-2">
+                  {formatPrice(product.price)}
+                  {product.originalPrice && (
+                    <span className="text-muted-foreground text-base line-through ml-2">
+                      {formatPrice(product.originalPrice)}
+                    </span>
+                  )}
+                </div>
+                
+                {/* Shipping information */}
+                <div className="text-sm text-emerald-600 mb-6">
+                  Free shipping on orders over ₹599
+                </div>
                 
                 <p className="text-muted-foreground mb-8">{product.description}</p>
                 
@@ -193,8 +286,18 @@ const ProductDetail = () => {
                     <ShoppingBag size={18} />
                     Add to Cart
                   </button>
-                  <button className="bg-white border border-bazaar-saffron/20 hover:bg-bazaar-saffron/5 p-3 rounded-md transition-colors">
-                    <Heart size={20} className="text-foreground" />
+                  <button 
+                    onClick={handleToggleWishlist}
+                    className={`bg-white border p-3 rounded-md transition-colors ${
+                      isInWishlist 
+                        ? "border-bazaar-red bg-bazaar-red/5" 
+                        : "border-bazaar-saffron/20 hover:bg-bazaar-saffron/5"
+                    }`}
+                  >
+                    <Heart 
+                      size={20} 
+                      className={isInWishlist ? "text-bazaar-red fill-bazaar-red" : "text-foreground"} 
+                    />
                   </button>
                 </div>
                 
@@ -228,6 +331,22 @@ const ProductDetail = () => {
               </div>
             </div>
           </div>
+          
+          {/* Related Products Section */}
+          {relatedProducts.length > 0 && (
+            <div className="mt-16">
+              <h2 className="text-2xl font-display font-semibold mb-8">You May Also Like</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {relatedProducts.map(relatedProduct => (
+                  <ProductCard 
+                    key={relatedProduct.id} 
+                    product={relatedProduct} 
+                    onAddToCart={handleAddRelatedToCart}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </main>
       
