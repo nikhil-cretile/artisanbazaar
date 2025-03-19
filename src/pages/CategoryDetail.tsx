@@ -7,6 +7,7 @@ import { categories, getProductsByCategory, Product, CartItem, loadCartFromLocal
 import ProductCard from '@/components/ProductCard';
 import { toast } from '@/components/ui/use-toast';
 import Cart from '@/components/Cart';
+import { Button } from '@/components/ui/button';
 
 const CategoryDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -82,8 +83,8 @@ const CategoryDetail = () => {
           cartItemsCount={totalCartItems}
           onCartClick={() => setIsCartOpen(true)}
         />
-        <main className="flex-1 pt-16">
-          <div className="bazaar-container py-12 text-center">
+        <main className="flex-1">
+          <div className="bazaar-container py-12 text-center mt-16">
             <h1 className="text-3xl font-display font-bold mb-4">Category Not Found</h1>
             <p className="mb-8">The category you're looking for doesn't exist.</p>
             <Link to="/categories" className="text-bazaar-saffron hover:underline">
@@ -103,8 +104,8 @@ const CategoryDetail = () => {
         onCartClick={() => setIsCartOpen(true)}
       />
       
-      <main className="flex-1 pt-16">
-        <div className="relative h-64 md:h-80 overflow-hidden">
+      <main className="flex-1">
+        <div className="relative h-64 md:h-80 overflow-hidden mt-16">
           <img
             src={category.image}
             alt={category.name}
@@ -127,7 +128,7 @@ const CategoryDetail = () => {
         </div>
         
         <div className="bazaar-container py-12">
-          <h2 className="text-2xl font-display font-semibold mb-8">{category.count} Products</h2>
+          <h2 className="text-2xl font-display font-semibold mb-8">{products.length} Products</h2>
           
           {products.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -141,10 +142,13 @@ const CategoryDetail = () => {
             </div>
           ) : (
             <div className="text-center py-10">
-              <p className="text-muted-foreground mb-4">No products found in this category.</p>
-              <Link to="/products" className="text-bazaar-saffron hover:underline">
-                Browse all products
-              </Link>
+              <p className="text-muted-foreground mb-4">No products found in this category yet.</p>
+              <p className="mb-6">We're adding new products daily. Check back soon!</p>
+              <Button asChild variant="default">
+                <Link to="/products" className="px-6">
+                  Browse all products
+                </Link>
+              </Button>
             </div>
           )}
         </div>

@@ -1,7 +1,9 @@
 
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import { getFeaturedProducts, Product } from '@/lib/data';
+import { Button } from '@/components/ui/button';
 
 interface FeaturedProductsProps {
   onAddToCart?: (product: Product) => void;
@@ -33,7 +35,7 @@ const FeaturedProducts = ({ onAddToCart }: FeaturedProductsProps) => {
         observer.unobserve(item);
       });
     };
-  }, []);
+  }, [activeTab]);
 
   const isVisible = (id: string) => visibleItems.includes(id);
 
@@ -86,17 +88,32 @@ const FeaturedProducts = ({ onAddToCart }: FeaturedProductsProps) => {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {filteredProducts.map((product) => (
-            <div 
-              key={product.id}
-              id={product.id} 
-              className={`product-item transition-all duration-500 ${
-                isVisible(product.id) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-            >
-              <ProductCard product={product} onAddToCart={onAddToCart} />
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <div 
+                key={product.id}
+                id={product.id} 
+                className={`product-item transition-all duration-500 ${
+                  isVisible(product.id) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+              >
+                <ProductCard product={product} onAddToCart={onAddToCart} />
+              </div>
+            ))
+          ) : (
+            <div className="col-span-4 text-center py-10">
+              <p className="text-muted-foreground mb-4">No products found in this category yet.</p>
+              <Button asChild variant="default" className="mt-2">
+                <Link to="/products">Browse all products</Link>
+              </Button>
             </div>
-          ))}
+          )}
+        </div>
+        
+        <div className="text-center mt-12">
+          <Button asChild variant="outline" className="px-8">
+            <Link to="/products">View All Products</Link>
+          </Button>
         </div>
       </div>
     </section>
