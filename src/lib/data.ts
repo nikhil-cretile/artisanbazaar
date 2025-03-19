@@ -4,6 +4,7 @@ export type Product = {
   name: string;
   description: string;
   price: number;
+  originalPrice?: number; // Added as optional property
   image: string;
   category: string;
   artisanId: string;
