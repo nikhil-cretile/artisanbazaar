@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,18 +64,21 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				bazaar: {
-					red: "#D01C1F",
-					darkred: "#B01517",
-					crimson: "#CF1919",
+					red: "#FF3E6C",         // Updated to Myntra-like pink-red
+					darkred: "#E41E3F",     // Darker version
+					crimson: "#EA4C89",     // Secondary accent
 					maroon: "#800000",
 					coral: "#FF6F61",
-					cream: "#F7F3E9",
+					cream: "#F5F5F6",       // Updated background color
 					gold: "#FFD700",
 					bronze: "#CD7F32",
 					spice: "#9E4C2E",
-					mehendi: "#768D7D",
+					mehendi: "#05A685",     // Flipkart-like teal
 					terracotta: "#BC5D2E",
-					clay: "#C67D5A"
+					clay: "#C67D5A",
+					saffron: "#FB641B",     // Flipkart-like orange
+					peacock: "#2874F0",     // Flipkart blue
+					emerald: "#14CDA2"      // Success green
 				}
 			},
 			borderRadius: {
